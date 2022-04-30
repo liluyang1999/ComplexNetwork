@@ -1,7 +1,10 @@
-%% Tournament Selection in Multi-Objective Evolutionary Algorithm
-function parents = multi_obj_selection(population, parentSize, popRank, crowDists)
+%% Crowded Tournament Selection in Multi-Objective Evolutionary Algorithm
+function parents = multi_obj_selection(population, parentSize)
     popSize = size(population, 2);
     parents = cell(1, parentSize);
+
+    [allFronts, popRank] = non_dominated_sorting(population);
+    crowDists = crowding_distance(population, allFronts);   
 
     % Randomly select two individuals and choose the elite as the parent
     % each time until reaching the required parents size

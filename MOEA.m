@@ -1,10 +1,10 @@
 %% Question 5(b): Implement multi-objective evolutionary algorithm
 function [bestSolutions, bestMultiFitValues] = MOEA(N, p1, p2)
-    % Algorithm: NSGA-Ⅱ
+    % Algorithm: NSGA-II
    
     % Population Size: 80, Maximum Generations: 80
-    popSize = 100;
-    maxGen = 100;
+    popSize = 80;
+    maxGen = 80;
     
     % Generate initial population of solutions
     population = init_population(N, popSize);
@@ -16,12 +16,9 @@ function [bestSolutions, bestMultiFitValues] = MOEA(N, p1, p2)
     % Start iteration
     for curGen = 1 : maxGen
 
-        [allFronts, popRank] = non_dominated_sorting(population);
-        crowDists = crowding_distance(population, allFronts);
-
         % Select parents from population according to pareto rank and
         % crowding distances
-        parents = multi_obj_selection(population, popSize, popRank, crowDists);
+        parents = multi_obj_selection(population, popSize);
         
         % Perform mutation on the parents to generate offsprings
         offsprings = mutation(parents, p1, p2);
@@ -38,7 +35,7 @@ function [bestSolutions, bestMultiFitValues] = MOEA(N, p1, p2)
     end
 
     % Return the 10 best solutions and their corresponding multi fitness
-    bestSolutions = population(1 : 100);
+    bestSolutions = population(1 : 10);
     bestMultiFitValues = multi_obj_fitness(bestSolutions);
 end
 
