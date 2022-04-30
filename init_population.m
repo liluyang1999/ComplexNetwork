@@ -1,4 +1,4 @@
-%% Randomly generate network graphs according to populationSize
+%% Randomly generate network graphs according to size of population
 function population = init_population(N, popSize)
     % The vertices number of graph is N
     population = cell(1, popSize);

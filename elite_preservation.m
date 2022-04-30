@@ -28,7 +28,6 @@ function newPopulation = elite_preservation(comPop, popSize, allFronts, crowDist
             return;
         end
     end
-
 end
 
 

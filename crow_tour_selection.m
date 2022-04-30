@@ -1,8 +1,9 @@
 %% Crowded Tournament Selection in Multi-Objective Evolutionary Algorithm
-function parents = multi_obj_selection(population, parentSize)
+function parents = crow_tour_selection(population, parentSize)
     popSize = size(population, 2);
     parents = cell(1, parentSize);
 
+    % Calculate the pareto ranks and crowding distances of population
     [allFronts, popRank] = non_dominated_sorting(population);
     crowDists = crowding_distance(population, allFronts);   
 

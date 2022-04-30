@@ -17,17 +17,17 @@ function [bestGraph, bestFw] = EA_weighted_fitness(N, p1, p2, a1, a2, a3)
         parents = selection(population, popSize);
         
         % Variation: apply mutation to the selected parents
-        newIndivs = mutation(parents, p1, p2);
+        offsprings = mutation(parents, p1, p2);
         
         % Evaluate the linearly weighted fitness of new individuals
-        newFitValues = weighted_fitness(newIndivs, a1, a2, a3);
+        newFitValues = weighted_fitness(offsprings, a1, a2, a3);
         [sortValues, sortIndexes] = sort([popFitValues, newFitValues], 'descend');
         popFitValues = sortValues(1, 1:popSize);
         sortIndexes = sortIndexes(1, 1:popSize);
 
         % Reproduction (replace the worse individuals)
         temp(1, 1:popSize) = population(1, :);
-        temp(1, popSize+1:popSize*2) = newIndivs(1, :);
+        temp(1, popSize+1:popSize*2) = offsprings(1, :);
         [population{1, :}] = deal(temp{1, sortIndexes});
     end
 
