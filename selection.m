@@ -21,6 +21,5 @@ function parents = selection(population, parentSize)
             parents{1, i} = population{1, R2};
         end
     end
-    
 end
 

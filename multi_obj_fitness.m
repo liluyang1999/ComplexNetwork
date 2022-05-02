@@ -12,13 +12,13 @@ function [multiFitValues] = multi_obj_fitness(population)
         multiFitValues{1}(index) =  1 / avgPathLen;
     end
 
-    % Fitness 2: inverse of diameter (network maintenance costs)
+    % Fitness 2: inverse of diameter (complaint + refund costs)
     for index = 1 : popSize
         diameter = cal_diameter(population{index});
         multiFitValues{2}(index) = 1 / diameter;
     end
 
-    % Fitness 3: inverse of total link number (complaint + refund costs)
+    % Fitness 3: inverse of total link number (network maintenance costs)
     for index = 1 : popSize
         linkNum = cal_link_num(population{index});
         multiFitValues{3}(index) = 1 / linkNum;
