@@ -9,8 +9,8 @@ function newPopulation = elite_preservation(comPop, popSize, allFronts, crowDist
 
     for rank = 1 : frontSize
         curFrontIndexes = allFronts(rank).front;
-        temp = count + size(curFrontIndexes, 2);
         [~, sortIndexes] = sort(crowDists(curFrontIndexes), "descend"); 
+        temp = count + size(curFrontIndexes, 2);
         if temp <= popSize
             % If the remaining size of new population is large enough, 
             % incorporate all the individuals of the current front into it

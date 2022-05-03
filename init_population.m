@@ -1,6 +1,7 @@
 %% Randomly generate network graphs according to the size of population
 function population = init_population(N, popSize)
     % The vertices number of graph is N
+    % Return: the population of graphs in the form of adjacency matrix
     population = cell(1, popSize);
     maxLinkNum = N * (N - 1) / 2;
     for index = 1 : popSize
@@ -30,6 +31,7 @@ function population = init_population(N, popSize)
             t(1, N+1:linkNum) = randi(N, 1, randNum);
             graph_G = graph(s, t);
             graph_G = simplify(graph_G);
+            % Convert to adjacency matrix
             G = full(adjacency(graph_G));
             if check_connected(G) == true
                 population{1, index} = G;

@@ -34,12 +34,12 @@ function [allFronts, popRank] = non_dominated_sorting(population)
                     lessFitNum = lessFitNum + 1;
                 end
             end
-            % Check if i dominates j
-            if lessFitNum == 0 && betterFitNum > 0
-                % If i dominates j, n = n + 1
+            % Check the domination
+            if betterFitNum == 0 && lessFitNum > 0
+                % If i is dominated by j, n = n + 1
                 P(i).n = P(i).n + 1;
-            elseif betterFitNum == 0 && lessFitNum > 0
-                % If j dominates i, add j into S
+            elseif lessFitNum == 0 && betterFitNum > 0
+                % If i dominates j, add j into S
                 P(i).S = [P(i).S, j];
             end
         end

@@ -5,13 +5,13 @@ function [bestSolutions, bestMultiFitValues] = MOEA(N, p1, p2)
     % Population Size: 80
     % Maximum Generations: 80
     popSize = 80;
-    maxGen = 80;
+    MaxGen = 80;
     
     % Generate the initial population of solutions
-    population = init_population(N, popSize);
+    population = init_pop(N, popSize);
     
     % Start iteration
-    for curGen = 1 : maxGen
+    for curGen = 1 : MaxGen
         % Crowded Tournament Selection
         % Select parents from population according to pareto rank and
         % crowding distances of current population
@@ -35,4 +35,38 @@ function [bestSolutions, bestMultiFitValues] = MOEA(N, p1, p2)
     bestSolutions = population(1 : 10);
     bestMultiFitValues = multi_obj_fitness(bestSolutions);
 end
+
+
+% Generate the initial population of MOEA
+% Randomly generate the adjacency matrix of graph
+function population = init_pop(N, popSize)
+    % The vertices number of graph is N
+    population = cell(1, popSize);
+    for index = 1 : popSize
+        population{index} = gen_graph(N);
+    end
+end
+
+% Generate a random connected graph
+function graph = gen_graph(N)
+    while true
+        graph = zeros(N, N);
+        for i = 1 : N
+            for j = i : N
+                if i == j 
+                    graph(i, j) = 0;
+                else
+                    randNum = randi(2) - 1;
+                    graph(i, j) = randNum;
+                    graph(j, i) = randNum;
+                end
+            end
+        end
+        if check_connected(graph) == true
+            return;
+        end
+    end
+end
+
+
 

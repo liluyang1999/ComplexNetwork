@@ -64,6 +64,8 @@ function [G, rand1, rand2] = remove_link(G)
                 return;
             else
                 GCopy = G;
+                % Record which links have been checked and are not meet the
+                % requirement of removing 
                 [records, recIndex] = record_link(records, recIndex, rand1, rand2);
             end 
         end
