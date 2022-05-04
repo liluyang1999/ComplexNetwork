@@ -36,11 +36,11 @@ non_dominated_sorting.m ---- Non-dominated sorting of population used in 'MOEA.m
 
 selection.m ---- Binary tournament selection used in 'EA.m' and 'EA_weighted_fitness.m'
 
-test_question2.mlx ---- The test process and results about question 2
+test_question2.mlx ---- The running process and results about question 2
 
-test_question4.mlx ---- The test process and results about question 4
+test_question4.mlx ---- The running process and results about question 4
 
-test_question5.mlx ---- The test process and results about question 5
+test_question5.mlx ---- The running process and results about question 5
 
 test_question6.mlx ---- The calculation of functions f1(p), f2(p), f3(p), fw(p) and corresponding graphs about question 6
 
